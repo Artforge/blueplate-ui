@@ -10,13 +10,15 @@
 	<!-- Date: 2010-05-22 -->
 	<link rel="stylesheet" href="stylesheets/application.css" type="text/css" media="screen" title="no title" charset="utf-8">
 	<link rel="stylesheet" href="stylesheets/jquery.tweet.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="stylesheets/facebox.css" type="text/css" media="screen" title="no title" charset="utf-8">
 	
 	<script src="javascripts/jquery-1.4.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="javascripts/jquery-ui.js" type="text/javascript" charset="utf-8"></script>
 	<script src="javascripts/json2.js" type="text/javascript" charset="utf-8"></script>
 	<script src="javascripts/blueplate.jquery.js" type="text/javascript" charset="utf-8"></script>
 	<script src="javascripts/md5.js" type="text/javascript" charset="utf-8"></script>
-	<script src="javascripts/jquery.tweet.js" type="text/javascript" charset="utf-8"></script>
+	<!--<script src="javascripts/jquery.tweet.js" type="text/javascript" charset="utf-8"></script>-->
+	<script src="javascripts/facebox.js" type="text/javascript" charset="utf-8"></script>
 	
 	<script type="text/javascript" charset="utf-8">
 	
@@ -29,8 +31,14 @@
 			populateInbox(tasks)
 			populateContacts(contacts);
 			
-			twitterSearch("#hackdisrupt",8);
+			$("#contacts .contact").live("click",sendDirectMessage)
+			// twitterSearch("#hackdisrupt",8);
 		});
+		
+		function sendDirectMessage(){
+			var user = $(this).data("user");
+			jQuery.facebox("<h1>Send a direct message to " + user.email + "</h1><div class='body'><textarea></textarea><button type='button'>Send!</button></div>");
+		}
 		
 		function populateContacts(contacts){
 			var template = $('#hidden_templates .contact');
@@ -44,17 +52,17 @@
 					hoverClass: 'highlight',
 					drop: delegate_task
 				});
-				$("#contacts").append(elContact).fadeIn();
+				$("#contacts .items").append(elContact).fadeIn();
 			})
 		}
 		
 		function populateInbox(tasks){
 			var template = $('#hidden_templates .task');
 			$(tasks).each(function(i){
-				elTask = $("#inbox").append($('<div>').bp_task(tasks[i],{template: template}).fadeIn());	
+				elTask = $("#inbox .items").append($('<div>').bp_task(tasks[i],{template: template}).fadeIn());	
 			})
-			$("#inbox,#tickets,#trash").sortable({
-				connectWith: '.list_module',
+			$("#inbox .items,#tickets .items,#trash .items").sortable({
+				connectWith: '.list_module .items',
 				cursor: 'crosshair',
 				opacity: 0.5,
 				scroll: true,
@@ -101,12 +109,14 @@
 				dropped_item = $(ui.item)
 				target = this
 				task = dropped_item.data("task")
-				if (target.id == "trash"){
+				if (target.id == "trashbin"){
 					dropped_item.fadeOut();
 				}
 				console.log("You Dropped task " + task.id + " into " + target.id);
 			}
 		}
+		
+		
 	
 	</script>
 	
@@ -131,19 +141,22 @@
 	</div>
 	
 	<div id="inbox" class="fl list_module">
-		
+		<h2>Inbox</h2>
+		<div class="items"></div>
 	</div>
 	
 	<div id="tickets" class="fl list_module">
-		
+		<h2>On your plate</h2>
+		<div class="items"></div>
 	</div>
 	
 	<div class="fr">
 		<div id="contacts" class="list_module last">
-		
+			<h2>Contacts</h2>
+			<div class="items"></div>
 		</div>
 		<div id="trash" class="list_module last">
-		
+			<div id="trashbin" class="items"></div>
 		</div>
 	</div>
 	

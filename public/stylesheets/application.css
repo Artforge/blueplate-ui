@@ -13,8 +13,10 @@ body{font-family:arial;font-size:10pt;}
 #user .info{margin:5px;}
 #user a.logout{}
 
-.list_module{width:300px;min-height:400px;border:1px solid #ccc;margin-right:20px;-moz-border-radius: 5px; -webkit-border-radius: 5px;}
+.list_module{width:300px;border:1px solid #ccc;margin-right:20px;-moz-border-radius: 5px; -webkit-border-radius: 5px;}
 .list_module.last{margin-right:0;}
+.list_module h2{margin:0px;padding:3px 0;text-align:center;border-bottom:1px solid #ccc;}
+.list_module .items{margin:5px;min-height:400px;}
 
 .task{background:#fff;border:1px solid #ccc;padding:5px;margin:5px;min-height:44px;}
 .task .source_icon{float:left;background:#0069AC;height:40px;width:40px;margin:2px 7px 2px 2px;-moz-border-radius: 5px; -webkit-border-radius: 5px;}
@@ -27,12 +29,25 @@ body{font-family:arial;font-size:10pt;}
 
 #inbox{position:relative;z-index:3;background:#CFCDFF;padding:0 0 5px;}
 #inbox .task{}
+#inbox h2{background:#a19eff;}
 
-#tickets{background:#FFE3CD;padding:0 0 5px;}
-#contacts{background:#E8FFD2;padding:5px 5px 0px;min-height:300px;}
-#query{background:#B8E9FF;padding:0 0 5px;}
-#trash{background:#eee url(/images/trash.png) no-repeat center center;padding:0 5px;min-height:90px;margin-top:8px;}
+#tickets{background:#FFE3CD;}
+#tickets h2{background:#ffb780;}
+
+#contacts{background:#E8FFD2;}
+#contacts h2{background:#b6e58a;}
+#contacts .items{min-height:290px;}
+
+#query{background:#B8E9FF;}
+#trash {background:#eee url(/images/trash.png) no-repeat center center;margin-top:8px;}
+#trash .items{min-height:90px;}
 #trash .highlight{background:yellow;}
+
+#facebox td.body{padding:0px;}
+#facebox h1{background:#CFCDFF;margin:0px;padding:5px;border-bottom:1px solid #ccc;font-size:12pt;}
+#facebox div.body{padding:5px;text-align:right;}
+#facebox div.body textarea{width:100%;}
+#facebox div.body button{background:#CFCDFF;border:1px solid #a19eff;margin-top:5px;}
 
 /* Corner radius */
 .corner-tl-5 { -moz-border-radius-topleft: 5px; -webkit-border-top-left-radius: 5px; }
