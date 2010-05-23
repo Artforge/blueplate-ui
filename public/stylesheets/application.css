@@ -44,7 +44,7 @@ body{font-family:arial;font-size:10pt;}
 #trash .highlight{background:yellow;}
 
 #facebox td.body{padding:0px;}
-#facebox h1{background:#CFCDFF;margin:0px;padding:5px;border-bottom:1px solid #ccc;font-size:12pt;}
+#facebox h1{background:#CFCDFF;margin:0px;padding:5px;border-bottom:1px solid #ccc;font-size:10pt;}
 #facebox div.body{padding:5px;text-align:right;}
 #facebox div.body textarea{width:100%;}
 #facebox div.body button{background:#CFCDFF;border:1px solid #a19eff;margin-top:5px;}
